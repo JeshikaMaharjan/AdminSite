@@ -1,0 +1,74 @@
+.logincontainer {
+  /* background-color: aqua; */
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  padding: 2rem;
+}
+.loginInnerContainer {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  grid-template-areas: "logo form";
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+  border: 2px solid white;
+  border-radius: 2rem;
+  padding: 20px;
+}
+
+.loginInnerContainer .logo {
+  border-radius: 1rem;
+  width: 90%;
+  min-width: 150px;
+  grid-area: logo;
+}
+.loginform {
+  grid-area: form;
+  display: grid;
+  gap: 5px;
+  justify-items: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.loginform input {
+  background-color: rgb(226, 236, 236);
+  border: 2px solid rgba(10, 93, 160, 0.932);
+  max-width: 180px;
+  padding: 0.5em;
+  border-radius: 1rem;
+  font-size: 16px;
+  color: rgba(10, 93, 160, 0.932);
+}
+.loginform input:placeholder-shown {
+  padding-left: 15px;
+}
+
+.loginform p {
+  font-size: 20px;
+}
+.userbx,
+.passwordbx {
+  display: flex;
+  gap: 5px;
+}
+.icon {
+  margin-top: 2px;
+}
+.signInButton:hover {
+  background-color: rgb(67, 218, 67);
+  color: black;
+}
+
+@media (max-width: 810px) {
+  .loginInnerContainer {
+    grid-template-rows: 1fr 1.2fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      " logo"
+      " form";
+  }
+  .logincontainer h1 {
+    font-size: 24px;
+  }
+}

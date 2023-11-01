@@ -1,0 +1,80 @@
+.DashboardContainer {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  grid-template-areas:
+    "header"
+    "main";
+  gap: 10px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.header {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr 0.2fr;
+  grid-template-areas: "logo navbar profile logout";
+  justify-items: center;
+  align-items: center;
+  border: 2px solid white;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  background-color: rgba(11, 11, 70, 0.603);
+}
+.main {
+  border: 2px solid white;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  overflow: scroll;
+  display: grid;
+  grid-template-rows: 70px repeat(4, auto);
+  grid-template-areas:
+    "dashboard"
+    "todo"
+    "statistics"
+    "spam"
+    "doctor";
+
+  gap: 10px;
+  padding: 15px 0px;
+}
+.header .logo {
+  width: 60%;
+  min-width: 80px;
+}
+.dashboard {
+  display: flex;
+  align-items: center;
+  /* width: 60%; */
+  justify-content: space-between;
+  background-color: rgba(11, 11, 70, 0.603);
+}
+.date {
+  margin-right: 10px;
+}
+.main > div {
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 1em;
+  background-color: rgba(11, 11, 70, 0.603);
+}
+
+.todoInner,
+.statisticsInner,
+.spamInner,
+.doctorInner {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.navbar {
+  display: flex;
+  /* width: 100%; */
+  gap: 15px;
+  justify-content: center;
+}
+.navbar span {
+  padding: 1em;
+  font-size: 20px;
+}
+.profile img {
+  max-height: 50px;
+  border-radius: 60%;
+}
