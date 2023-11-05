@@ -1,10 +1,11 @@
 import "../styles/Dashboard.css";
 import HouseIcon from "@mui/icons-material/House";
-import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import AssessmentIcon from "@mui/icons-material/Assessment";
-import FeedbackIcon from "@mui/icons-material/Feedback";
-import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
-import logo from "../assets/logo.png";
+
+import Header from "./Header";
+import Statistics from "./Statistics";
+import ToDo from "./ToDo";
+import Spam from "./Spam";
+import Doctor from "./Doctor";
 export default function Dashboard() {
   const months = [
     "January",
@@ -30,21 +31,7 @@ export default function Dashboard() {
     <>
       <div className="DashboardContainer">
         <div className="header">
-          <div className="logo">
-            {/* <h2>kkk</h2> */}
-            <img src={logo} />
-          </div>
-          <div className="navbar">
-            <p>To Do</p>
-            <p>Statistics</p>
-            <p>Spam Reports</p>
-            <p>Doctor Relevancy</p>
-          </div>
-          <div className="profile">
-            <img src={logo} />
-            <h3>Jeshika Maharjan</h3>
-            <p className="logoutbtn">Logout</p>
-          </div>
+          <Header />
         </div>
         <div className="main">
           <div className="dashboard">
@@ -56,42 +43,16 @@ export default function Dashboard() {
             </h3>
           </div>
           <div className="todo">
-            <div className="todoInner">
-              <FormatListBulletedIcon />
-              <h2>To Do</h2>
-            </div>
-            <div className="circles">
-              <div className="circle">4</div>
-              <span>Spam Reports</span>
-              <div className="circle">5</div>
-              <span>Doctor Relevancy</span>
-            </div>
+            <ToDo />
           </div>
           <div className="statistics">
-            <div className="statisticsInner">
-              <AssessmentIcon />
-              <h2>Statistics</h2>
-            </div>
-            <div className="charts">
-              <div className="graph">
-                <img src="../src/assets/graph.png " />
-              </div>
-              <div className="pieChart">
-                <img src="../src/assets/piechart.png " />
-              </div>
-            </div>
+            <Statistics />
           </div>
           <div className="spam">
-            <div className="spamInner">
-              <FeedbackIcon />
-              <h2>Spam Reports</h2>
-            </div>
+            <Spam />
           </div>
           <div className="doctor">
-            <div className="doctorInner">
-              <VerifiedUserIcon />
-              <h2>Doctor Relevancy</h2>
-            </div>
+            <Doctor />
           </div>
         </div>
       </div>
