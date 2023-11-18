@@ -1,0 +1,50 @@
+.spamPost {
+  /* background-color: aqua; */
+  /* border: 1px solid white; */
+  padding: 1rem;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.spamPostInner {
+  width: 80%;
+  overflow: hidden;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 2fr 0.5fr;
+  grid-template-areas: " post postAction";
+}
+.post {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 10px;
+  border-right: 2px dashed white;
+}
+.post img {
+  width: 600px;
+  align-self: center;
+}
+.postAction {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  min-height: 250px;
+  flex-wrap: wrap;
+}
+.user {
+  font-size: 22px;
+  color: red;
+}
+.spamPost button {
+  padding: 0.5rem;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px solid white;
+}
+.spamPost button:hover {
+  background-color: antiquewhite;
+  color: black;
+}

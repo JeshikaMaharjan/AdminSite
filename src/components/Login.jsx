@@ -5,6 +5,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 export default function Login() {
   const [userName, setuserName] = useState();
   const [password, setPassword] = useState();
@@ -20,8 +21,12 @@ export default function Login() {
   function handlePassword(e) {
     setPassword(e.target.value);
   }
-  function postData() {
-    pass;
+  async function postData() {
+    const postdata = {
+      username: userName,
+      password: password,
+    };
+    const result = await axios.post("url", postdata);
   }
   function handleSubmit() {
     if (!userName && !password) {
