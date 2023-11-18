@@ -1,6 +1,4 @@
 import "../styles/Dashboard.css";
-import HouseIcon from "@mui/icons-material/House";
-
 import Header from "./Header";
 import Statistics from "./Statistics";
 import ToDo from "./ToDo";
@@ -28,34 +26,32 @@ export default function Dashboard() {
   const day = today.getDate();
 
   return (
-    <>
-      <div className="DashboardContainer">
-        <div className="header">
-          <Header />
+    <div className="DashboardContainer">
+      <div className="header">
+        <Header />
+      </div>
+      <div className="main">
+        <div className="dashboard">
+          <div className="dashboardInner">
+            <h1>Admin Dashboard</h1>
+          </div>
+          <h3 className="date">
+            {month} {day}, {year}
+          </h3>
         </div>
-        <div className="main">
-          <div className="dashboard">
-            <div className="dashboardInner">
-              <h1>Admin Dashboard</h1>
-            </div>
-            <h3 className="date">
-              {month} {day}, {year}
-            </h3>
-          </div>
-          <div className="todo">
-            <ToDo />
-          </div>
-          <div className="statistics">
-            <Statistics />
-          </div>
-          <div className="spam">
-            <Spam />
-          </div>
-          <div className="doctor">
-            <Doctor />
-          </div>
+        <div className="todo">
+          <ToDo />
+        </div>
+        <div className="statistics">
+          <Statistics />
+        </div>
+        <div className="spam">
+          <Spam />
+        </div>
+        <div className="doctor">
+          <Doctor />
         </div>
       </div>
-    </>
+    </div>
   );
 }

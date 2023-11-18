@@ -4,7 +4,6 @@ export default function () {
   return (
     <>
       <div className="logo">
-        {/* <h2>kkk</h2> */}
         <img src={logo} />
       </div>
       <div className="navbar">

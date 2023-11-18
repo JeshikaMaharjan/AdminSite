@@ -24,39 +24,37 @@ export default function ForgotPassword() {
     postData();
   }
   return (
-    <>
-      <div className="forgotPasswordContainer">
-        <div className="forgotInnerContainer">
-          <h1>Forgot Password</h1>
+    <div className="forgotPasswordContainer">
+      <div className="forgotInnerContainer">
+        <h1>Forgot Password</h1>
 
-          <p>Username</p>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            required
-            onChange={handleUsername}
-          />
-          <p>Email Address</p>
+        <p>Username</p>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          required
+          onChange={handleUsername}
+        />
+        <p>Email Address</p>
 
-          <input
-            type="text"
-            placeholder="Enter email address"
-            required
-            onChange={handleEmail}
-          />
+        <input
+          type="text"
+          placeholder="Enter email address"
+          required
+          onChange={handleEmail}
+        />
 
-          <input
-            type="submit"
-            className="forgotButton"
-            value="Submit"
-            onClick={handleSubmit}
-          />
-          <p>
-            Please enter your valid email address and username below. Check your
-            email for further details.
-          </p>
-        </div>
+        <input
+          type="submit"
+          className="forgotButton"
+          value="Submit"
+          onClick={handleSubmit}
+        />
+        <p>
+          Please enter your valid email address and username below. Check your
+          email for further details.
+        </p>
       </div>
-    </>
+    </div>
   );
 }

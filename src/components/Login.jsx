@@ -30,55 +30,53 @@ export default function Login() {
     postData();
   }
   return (
-    <>
-      <div className="logincontainer">
-        <div className="loginInnerContainer">
-          <img src={logo} className="logo" />
+    <div className="logincontainer">
+      <div className="loginInnerContainer">
+        <img src={logo} className="logo" />
 
-          <div className="loginform">
-            <h1>Admin Login</h1>
-            <div className="userbx">
-              <p>Username</p>
-              <span className="icon">
-                <AccountCircleOutlinedIcon />
-              </span>
-            </div>
-            <input
-              type="text"
-              placeholder="Enter Username"
-              required
-              onChange={handleUsername}
-            />
-            <div className="passwordbx">
-              <p>Password</p>
-              <span className="icon" onClick={toggleBtn}>
-                {state ? (
-                  <VisibilityOffOutlinedIcon />
-                ) : (
-                  <VisibilityOutlinedIcon />
-                )}
-              </span>
-            </div>
-            <input
-              type={state ? "password" : "text"}
-              placeholder="Enter Password"
-              required
-              onChange={handlePassword}
-            />
-
-            <input
-              type="submit"
-              className="signInButton"
-              value="Sign In"
-              onClick={handleSubmit}
-            />
-
-            <span onClick={() => navigate("/forgotpassword")}>
-              Forgot Password?
+        <div className="loginform">
+          <h1>Admin Login</h1>
+          <div className="userbx">
+            <p>Username</p>
+            <span className="icon">
+              <AccountCircleOutlinedIcon />
             </span>
           </div>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            required
+            onChange={handleUsername}
+          />
+          <div className="passwordbx">
+            <p>Password</p>
+            <span className="icon" onClick={toggleBtn}>
+              {state ? (
+                <VisibilityOffOutlinedIcon />
+              ) : (
+                <VisibilityOutlinedIcon />
+              )}
+            </span>
+          </div>
+          <input
+            type={state ? "password" : "text"}
+            placeholder="Enter Password"
+            required
+            onChange={handlePassword}
+          />
+
+          <input
+            type="submit"
+            className="signInButton"
+            value="Sign In"
+            onClick={handleSubmit}
+          />
+
+          <span onClick={() => navigate("/forgotpassword")}>
+            Forgot Password?
+          </span>
         </div>
       </div>
-    </>
+    </div>
   );
 }
