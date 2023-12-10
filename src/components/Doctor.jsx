@@ -1,26 +1,51 @@
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import "../styles/Doctor.css";
 import axios from "axios";
+import { useEffect, useState } from "react";
 export default function Doctor() {
-  const data = [
-    {
-      id: "1",
-      user: "Arun",
-      NMC: "1234",
-      degree: "MBBS",
-    },
-    {
-      id: "2",
-      user: "Arun",
-      NMC: "1234",
-      degree: "MBBS",
-    },
-  ];
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    async function getData() {
+      try {
+        const result = await axios.get(
+          "http://172.17.1.31:3000/api/unverified/doctor"
+        );
+        console.log(result.data.data);
+        setData(result.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getData();
+  }, []);
+  // const data = [
+  //   {
+  //     id: "1",
+  //     user: "Arun",
+  //     NMC: "1234",
+  //     degree: "MBBS",
+  //   },
+  //   {
+  //     id: "2",
+  //     user: "Arun",
+  //     NMC: "1234",
+  //     degree: "MBBS",
+  //   },
+  // ];
   async function handleSubmit(e) {
     const relevant = e.target.id;
+    const user = e.target.value;
+    const postData = {
+      is_verified: Boolean(relevant),
+      userName: user,
+    };
+
     console.log(relevant);
     console.log(e.target.value);
-    const result = await axios.post("url", relevant);
+    const result = await axios.put(
+      "http://172.17.1.31:3000/api/verify/doctor",
+      postData
+    );
     console.log(result);
   }
   return (
@@ -39,15 +64,23 @@ export default function Doctor() {
           return (
             <>
               <p>{key + 1}</p>
-              <p>{doctor.user}</p>
+              <p>{doctor?.person?.user?.userName}</p>
               <p>{doctor.degree}</p>
               <p>{doctor.NMC}</p>
 
               <div className="doctorRelevancyActions">
-                <button id="true" value={doctor.user} onClick={handleSubmit}>
+                <button
+                  id="true"
+                  value={doctor?.person?.user?.userName}
+                  onClick={handleSubmit}
+                >
                   Accept
                 </button>
-                <button id="false" value={doctor.user} onClick={handleSubmit}>
+                <button
+                  id="false"
+                  value={doctor?.person?.user?.userName}
+                  onClick={handleSubmit}
+                >
                   Reject
                 </button>
               </div>

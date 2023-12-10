@@ -1,5 +1,5 @@
 export default function SpamPost({ data }) {
-  console.log(data);
+  // console.log(data);
   async function handleSpam(e) {
     const spam = e.target.id;
     console.log(spam);
