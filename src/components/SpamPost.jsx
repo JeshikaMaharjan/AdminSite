@@ -1,15 +1,29 @@
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalStates";
+import axios from "axios";
+
 export default function SpamPost({ data }) {
-  // console.log(data);
+  const [{ baseURL }] = useContext(GlobalContext);
+  console.log(data);
   async function handleSpam(e) {
-    const spam = e.target.id;
-    console.log(spam);
-    console.log(e.target.value);
-    const result = await axios.post("url", spam);
-    console.log(result);
+    const spam = e.target.value;
+    try {
+      const postData = {
+        id: spam,
+      };
+      console.log(spam);
+      const result = await axios.put(
+        `http://${baseURL}/api/spam/verify`,
+        postData
+      );
+      console.log(result);
+    } catch (e) {
+      console.log({ e });
+    }
   }
   return (
     <>
-      {data.map((post, key) => {
+      {data?.map((post, key) => {
         return (
           <div className="spamPostInner">
             <div className="post">
@@ -25,7 +39,7 @@ export default function SpamPost({ data }) {
                 type="submit"
                 onClick={handleSpam}
                 id="true"
-                value={post.user}
+                value={post.id}
               >
                 Spam
               </button>
@@ -33,7 +47,7 @@ export default function SpamPost({ data }) {
                 type="submit"
                 onClick={handleSpam}
                 id="false"
-                value={post.user}
+                value={post.id}
               >
                 Not Spam
               </button>

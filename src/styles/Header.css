@@ -66,4 +66,14 @@
   margin: 0.2em;
   border-radius: 1em;
   text-align: center;
+  background-color: transparent;
+}
+.logoutbtn:hover {
+  border: 1px solid white;
+  padding: 0.3em;
+  margin: 0.2em;
+  border-radius: 1em;
+  text-align: center;
+  background-color: white;
+  color: black;
 }

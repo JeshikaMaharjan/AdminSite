@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../styles/Login.css";
 import logo from "../assets/logo.png";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
@@ -6,10 +6,12 @@ import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { GlobalContext } from "../context/GlobalStates";
 export default function Login() {
   const [userName, setuserName] = useState();
   const [password, setPassword] = useState();
-  const [state, setstate] = useState(false);
+  const [state, setstate] = useState(true);
+  const [{ baseURL }, { setToken, setUserName }] = useContext(GlobalContext);
   const navigate = useNavigate();
   const toggleBtn = () => {
     setstate((prevState) => !prevState);
@@ -22,11 +24,19 @@ export default function Login() {
     setPassword(e.target.value);
   }
   async function postData() {
-    const postdata = {
-      username: userName,
-      password: password,
-    };
-    const result = await axios.post("url", postdata);
+    try {
+      const postdata = {
+        userName: userName,
+        password: password,
+      };
+      const result = await axios.post(`http://${baseURL}/api/login`, postdata);
+      console.log({ result });
+      setToken(result?.data?.data?.token);
+      setUserName(result?.data?.data?.username);
+      navigate("/admin");
+    } catch (e) {
+      console.log({ e });
+    }
   }
   function handleSubmit() {
     if (!userName && !password) {
@@ -57,9 +67,9 @@ export default function Login() {
             <p>Password</p>
             <span className="icon" onClick={toggleBtn}>
               {state ? (
-                <VisibilityOffOutlinedIcon />
-              ) : (
                 <VisibilityOutlinedIcon />
+              ) : (
+                <VisibilityOffOutlinedIcon />
               )}
             </span>
           </div>
@@ -77,7 +87,10 @@ export default function Login() {
             onClick={handleSubmit}
           />
 
-          <span onClick={() => navigate("/forgotpassword")}>
+          <span
+            className="forgotPasswordText"
+            onClick={() => navigate("/forgotpassword")}
+          >
             Forgot Password?
           </span>
         </div>

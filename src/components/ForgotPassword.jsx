@@ -1,11 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../styles/ForgotPassword.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { GlobalContext } from "../context/GlobalStates";
 
 export default function ForgotPassword() {
   const [userName, setuserName] = useState();
   const [email, setEmail] = useState();
+  const [{ baseURL }] = useContext(GlobalContext);
   const navigate = useNavigate();
   function handleUsername(e) {
     setuserName(e.target.value);
@@ -13,9 +16,22 @@ export default function ForgotPassword() {
   function handleEmail(e) {
     setEmail(e.target.value);
   }
-  function postData() {
-    // pass;
-    navigate("/login");
+  async function postData() {
+    try {
+      const postdata = {
+        userName: userName,
+        email: email,
+      };
+      const result = await axios.post(
+        `http://${baseURL}/api/forget/password`,
+        postdata
+      );
+      console.log({ result });
+
+      navigate("/login");
+    } catch (e) {
+      console.log({ e });
+    }
   }
   function handleSubmit() {
     if (!userName && !email) {

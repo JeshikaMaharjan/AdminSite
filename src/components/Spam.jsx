@@ -3,19 +3,21 @@ import "../styles/Spam.css";
 import axios from "axios";
 import image from "../assets/logo.png";
 import SpamPost from "./SpamPost";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../context/GlobalStates";
 export default function Spam() {
   // const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   async function getData() {
-  //     try {
-  //       const result = await axios.get("http://172.17.1.31:3000/api/spam");
-  //       console.log(result);
-  //       setData(result.data.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
+  // const [{ baseURL }] = useContext(GlobalContext);
+  // async function getData() {
+  //   try {
+  //     const result = await axios.get(`http://${baseURL}/api/spam`);
+  //     console.log(result);
+  //     setData(result?.data?.data);
+  //   } catch (error) {
+  //     console.log(error);
   //   }
+  // }
+  // useEffect(() => {
   //   getData();
   // }, []);
   const data = [

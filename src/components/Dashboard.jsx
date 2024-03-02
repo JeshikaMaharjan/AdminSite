@@ -4,6 +4,7 @@ import Statistics from "./Statistics";
 import ToDo from "./ToDo";
 import Spam from "./Spam";
 import Doctor from "./Doctor";
+
 export default function Dashboard() {
   const months = [
     "January",
@@ -39,12 +40,12 @@ export default function Dashboard() {
             {month} {day}, {year}
           </h3>
         </div>
-        <div className="todo">
+        {/* <div className="todo">
           <ToDo />
         </div>
         <div className="statistics">
           <Statistics />
-        </div>
+        </div> */}
         <div className="spam">
           <Spam />
         </div>

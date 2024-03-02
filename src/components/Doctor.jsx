@@ -1,21 +1,21 @@
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import "../styles/Doctor.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../context/GlobalStates";
 export default function Doctor() {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    async function getData() {
-      try {
-        const result = await axios.get(
-          "http://172.17.1.31:3000/api/unverified/doctor"
-        );
-        console.log(result.data.data);
-        setData(result.data.data);
-      } catch (error) {
-        console.log(error);
-      }
+  const [{ baseURL }] = useContext(GlobalContext);
+  async function getData() {
+    try {
+      const result = await axios.get(`http://${baseURL}/api/unverified/doctor`);
+      console.log(result.data.data);
+      setData(result.data.data);
+    } catch (error) {
+      console.log(error);
     }
+  }
+  useEffect(() => {
     getData();
   }, []);
   // const data = [
@@ -43,7 +43,7 @@ export default function Doctor() {
     console.log(relevant);
     console.log(e.target.value);
     const result = await axios.put(
-      "http://172.17.1.31:3000/api/verify/doctor",
+      `http://${baseURL}/api/verify/doctor`,
       postData
     );
     console.log(result);

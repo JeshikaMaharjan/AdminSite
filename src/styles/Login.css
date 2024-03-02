@@ -57,8 +57,12 @@
   margin-top: 2px;
 }
 .signInButton:hover {
-  background-color: rgb(67, 218, 67);
-  color: black;
+  background-color: rgb(14, 18, 68);
+  color: white;
+  cursor: pointer;
+}
+.forgotPasswordText:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 810px) {
