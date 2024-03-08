@@ -31,6 +31,7 @@ export default function Login() {
       };
       const result = await axios.post(`http://${baseURL}/api/login`, postdata);
       console.log({ result });
+      localStorage.setItem("token", result?.data?.data?.token);
       setToken(result?.data?.data?.token);
       setUserName(result?.data?.data?.username);
       navigate("/admin");

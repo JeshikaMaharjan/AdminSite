@@ -21,6 +21,22 @@ export default function SpamPost({ data }) {
       console.log({ e });
     }
   }
+  async function handleNotSpam(e) {
+    const spam = e.target.value;
+    try {
+      const postData = {
+        id: spam,
+      };
+      console.log(spam);
+      const result = await axios.put(
+        `http://${baseURL}/api/spam/reject`,
+        postData
+      );
+      console.log(result);
+    } catch (e) {
+      console.log({ e });
+    }
+  }
   return (
     <>
       {data?.map((post, key) => {
@@ -45,7 +61,7 @@ export default function SpamPost({ data }) {
               </button>
               <button
                 type="submit"
-                onClick={handleSpam}
+                onClick={handleNotSpam}
                 id="false"
                 value={post.id}
               >

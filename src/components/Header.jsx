@@ -1,5 +1,6 @@
 import "../styles/Header.css";
 import logo from "../assets/logo.png";
+import adminPhoto from "../assets/admin.jpg";
 import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalStates";
 import { useNavigate } from "react-router-dom";
@@ -9,12 +10,16 @@ export default function Header() {
 
   const handleLogout = () => {
     setToken(null);
+    localStorage.removeItem("token");
     navigate("/login");
   };
   return (
     <>
-      <div className="logo">
-        <img src={logo} />
+      <div className="appTitle">
+        <div className="logo">
+          <img src={logo} />
+        </div>
+        <p>GeoMedLink</p>
       </div>
       <div className="navbar">
         {/* <p>To Do</p>
@@ -23,7 +28,7 @@ export default function Header() {
         <p>Doctor Relevancy</p>
       </div>
       <div className="profile">
-        <img src={logo} />
+        <img src={adminPhoto} />
         <h3>{userName}</h3>
         <button className="logoutbtn" onClick={handleLogout}>
           Logout

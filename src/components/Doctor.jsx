@@ -9,7 +9,8 @@ export default function Doctor() {
   async function getData() {
     try {
       const result = await axios.get(`http://${baseURL}/api/unverified/doctor`);
-      console.log(result.data.data);
+
+      console.log(result?.data?.data);
       setData(result.data.data);
     } catch (error) {
       console.log(error);
@@ -18,20 +19,7 @@ export default function Doctor() {
   useEffect(() => {
     getData();
   }, []);
-  // const data = [
-  //   {
-  //     id: "1",
-  //     user: "Arun",
-  //     NMC: "1234",
-  //     degree: "MBBS",
-  //   },
-  //   {
-  //     id: "2",
-  //     user: "Arun",
-  //     NMC: "1234",
-  //     degree: "MBBS",
-  //   },
-  // ];
+
   async function handleSubmit(e) {
     const relevant = e.target.id;
     const user = e.target.value;
@@ -47,6 +35,7 @@ export default function Doctor() {
       postData
     );
     console.log(result);
+    getData();
   }
   return (
     <>

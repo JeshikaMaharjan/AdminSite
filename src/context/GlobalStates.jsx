@@ -4,7 +4,7 @@ export const GlobalContext = createContext([{ state: {}, actions: {} }]);
 
 const useStatesAndActions = () => {
   const baseURL = "192.168.101.18:5000";
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [userName, setUserName] = useState();
   const [userId, setUserId] = useState();
   const state = {

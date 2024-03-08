@@ -14,11 +14,21 @@
 .header .logo {
   display: flex;
   max-width: 90px;
-  min-width: 50px;
+  min-width: 40px;
+  padding: 8px;
 }
 .logo img {
   object-fit: contain;
   width: 100%;
+  border-radius: 2rem;
+}
+.header .appTitle {
+  display: flex;
+  flex-direction: "row";
+  align-items: center;
+}
+.appTitle p {
+  font-size: 30px;
 }
 .todoInner,
 .statisticsInner,
